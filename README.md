@@ -203,16 +203,6 @@ from joblib import load
 model = load('suya_classifier_v2.joblib') 
 prediksi = model.predict(["dosen tidak jelas menjelaskan materi"])
 ```
-
----
-
-## 📥 5. Download Resources
-
-- `suya_classifier_v2.joblib`
-- `suyafinal.ipynb`
-
-> Ganti link dengan URL aktual di GitHub, Hugging Face, atau Google Drive.
-
 ---
 
 **© 2025 SUYA Dev Team**
