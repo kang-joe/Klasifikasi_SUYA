@@ -1,5 +1,15 @@
-# 🎓 Sistem Klasifikasi Aspirasi Mahasiswa (SUYA) dengan Random Forest
+# 🎓 Sistem Klasifikasi Aspirasi Mahasiswa (SUYA) dengan Random Forest  
+📢 **NEW MODEL UPDATE!**: `suyafinal.ipynb` kini hadir dengan akurasi **89%**
 
+## 🌐 Deployment Online
+
+Aplikasi telah tersedia online melalui Hugging Face Spaces:
+
+🔗 **[SUYA Demo Online (v4.0)](https://huggingface.co/spaces/johndenver654/demosuya4)**  
+[![HuggingFace Spaces](https://img.shields.io/badge/Launch%20Demo-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/johndenver654/demosuya4)
+
+
+---
 
 ## 📌 Deskripsi Proyek
 Sistem klasifikasi otomatis untuk mengkategorikan aspirasi mahasiswa Fakultas Ilmu Komputer UDINUS ke dalam 5 kategori utama:
@@ -9,58 +19,65 @@ Sistem klasifikasi otomatis untuk mengkategorikan aspirasi mahasiswa Fakultas Il
 - Pembelajaran
 - Administrasi
 
-Model dikembangkan menggunakan algoritma **Random Forest**, menghasilkan akurasi keseluruhan **82%** dan skor F1 **0.83**.
+Model awal menggunakan algoritma **Random Forest**, menghasilkan akurasi keseluruhan **82%** dan skor F1 **0.83**.
+
+---
 
 ## 🛠️ Teknologi yang Digunakan
 
 - **Bahasa Pemrograman**: Python 3.11  
 - **Library Utama**:
   - `scikit-learn==1.2.2`
-  - `Sastrawi==1.0.1` (stemmer Bahasa Indonesia)
-  - `gradio==3.x` (antarmuka pengguna)
+  - `Sastrawi==1.0.1`
+  - `gradio==3.x`
 - **Infrastruktur**:
-  - Google Colab (untuk training model)
-  - Hugging Face Spaces (untuk deployment)
+  - Google Colab
+  - Hugging Face Spaces
+
+---
 
 ## 📂 Struktur File
 
 ```
 suya-classification/
-├── app.py                         # Aplikasi Gradio untuk prediksi
-├── suyastrong.py                 # Script training model
-├── suya_rf_model.pkl             # Model Random Forest terlatih
-├── suya_tfidf_vectorizer.pkl     # TF-IDF Vectorizer
-├── suya_label_encoder.pkl        # Label Encoder
-└── suya_prioritized_keywords.pkl # Kata kunci prioritas
+├── app.py
+├── suyastrong.py
+├── suya_rf_model.pkl
+├── suya_tfidf_vectorizer.pkl
+├── suya_label_encoder.pkl
+└── suya_prioritized_keywords.pkl
 ```
+
+---
 
 ## 🔧 Instalasi
 
-1. **Clone repository:**
-   ```bash
-   git clone https://github.com/[username]/suya-classification.git
-   cd suya-classification
-   ```
+```bash
+git clone https://github.com/[username]/suya-classification.git
+cd suya-classification
+pip install -r requirements.txt
+```
 
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
 ## 🚀 Cara Menjalankan
 
-### Prediksi via Gradio
+### 🔍 Prediksi via Gradio
+
 ```bash
 python app.py
 ```
-Aplikasi akan berjalan di `http://localhost:7860`
+Akses di `http://localhost:7860`
 
-### Training Model Baru
+### 🎯 Training Model Baru
+
 ```bash
 python suyastrong.py
 ```
 
-## 📊 Performa Model
+---
+
+## 📊 Performa Model Awal
 
 | Kategori       | Precision | Recall | F1-Score |
 |----------------|-----------|--------|----------|
@@ -70,7 +87,10 @@ python suyastrong.py
 | Ormawa         | 0.94      | 0.97   | 0.95     |
 | Pembelajaran   | 0.69      | 0.60   | 0.64     |
 
-**Akurasi Keseluruhan**: **82%**
+**Akurasi Total**: **82%**
+
+
+---
 
 ## 🧠 Alur Pemrosesan Teks
 
@@ -78,34 +98,36 @@ python suyastrong.py
 - Case folding
 - Menghapus tanda baca
 - Stopword removal
-- Stemming *(dengan pengecualian pada istilah penting)*
+- Stemming *(terkontrol)*
 
 ### Feature Engineering
 - TF-IDF (4000 fitur, n-gram 1–3)
 - Panjang teks
-- Kehadiran kata kunci prioritas
-- Jumlah kata kunci
+- Kata kunci prioritas
 
 ### Modeling
-Random Forest dengan hyperparameter terbaik:
 ```python
-{
-  'max_depth': None,
-  'max_features': 'log2',
-  'min_samples_leaf': 1,
-  'min_samples_split': 2,
-  'n_estimators': 500
-}
+RandomForestClassifier(
+  n_estimators=500,
+  max_depth=None,
+  max_features='log2',
+  min_samples_leaf=1,
+  min_samples_split=2
+)
 ```
 
-## 🌐 Deployment
+---
 
-Aplikasi telah di-deploy di **Hugging Face Spaces**:  
+## 🌐 Deployment
 [![🤗 Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/[username]/suya-classification)
 
-## 📝 Laporan Lengkap
-- Laporan Akhir (.pdf)
-- Presentasi Proyek (.pptx)
+---
+
+## 📝 Laporan Proyek
+- 📄 Laporan Akhir (.pdf)
+- 🎞️ Presentasi Proyek (.pptx)
+
+---
 
 ## 👥 Kontributor
 - **Ihda Nur Maulidia H.** (A11.2023.15394) — Ketua  
@@ -114,8 +136,83 @@ Aplikasi telah di-deploy di **Hugging Face Spaces**:
 - **Claresta Nalla S.** (A11.2023.15365)  
 - **Masayu Octa Faradisa** (A11.2023.15374)
 
-## 📄 Lisensi
+---
 
+## 📄 Lisensi
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
 ---
+
+# 🚀 SUYA Classifier Pipeline v2.0 (suyafinal.ipynb)  
+*Enhanced & Optimized Text Classification Model*
+
+Versi terbaru dari model awal dengan banyak perbaikan dan optimasi.
+
+[![Download Notebook](https://img.shields.io/badge/Download-Notebook-blue)](suyafinal.ipynb)  
+[![Try in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/your_username/your_repo/blob/main/suyafinal.ipynb)
+
+---
+
+## 🔍 1. Overview
+
+- ✅ Akurasi: **89.3%** (F1: 0.89)
+- 🛠️ Hyperparameter Tuning: GridSearchCV
+- 🔄 Data Augmentasi untuk kelas minoritas
+- 🧠 Feature Engineering: TF-IDF + Kata Kunci + Fitur Tambahan
+
+---
+
+## ⚙️ 2. Struktur Pipeline
+
+```python
+Pipeline([
+    ('features', FeatureUnion([
+        ('tfidf', TfidfVectorizer(max_features=5000, ngram_range=(1,3))),
+        ('keywords', CountVectorizer(vocabulary=flat_keywords)),
+        ('additional', AdditionalFeatures(prioritized_keywords))
+    ])),
+    ('classifier', RandomForestClassifier(
+        n_estimators=100,
+        max_depth=20,
+        class_weight='balanced_subsample'
+    ))
+])
+```
+
+---
+
+## 📊 3. Performa Model
+
+| Kategori      | Precision | Recall | F1-Score |
+|---------------|-----------|--------|----------|
+| Administrasi  | 0.88      | 0.97   | 0.92     |
+| Dosen         | 0.87      | 0.87   | 0.87     |
+| Fasilitas     | 0.82      | 0.93   | 0.87     |
+| Ormawa        | 0.97      | 0.93   | 0.95     |
+| Pembelajaran  | 0.96      | 0.77   | 0.85     |
+
+**Akurasi Total**: **89.3%**
+
+---
+
+## 🧪 4. Cara Penggunaan
+
+```python
+from joblib import load
+
+model = load('suya_classifier_v2.joblib') 
+prediksi = model.predict(["dosen tidak jelas menjelaskan materi"])
+```
+
+---
+
+## 📥 5. Download Resources
+
+- `suya_classifier_v2.joblib`
+- `suyafinal.ipynb`
+
+> Ganti link dengan URL aktual di GitHub, Hugging Face, atau Google Drive.
+
+---
+
+**© 2025 SUYA Dev Team**
